@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    //Layout = "MyLayout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>MVC Bank</h1>
+    <p class="lead">Middle Valley Community Bank is a community enterprise that takes money and sucks it into a black hole.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Powered by ASP>NET</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Register</h2>
+        <p>
+            Open an account with us
+        </p>
+        <p>@Html.ActionLink("Register here", "Register", "Account", null, new { @class = "btn-btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Log In</h2>
+        <p>Access your account</p>
+        <p>@Html.ActionLink("LogIn Here", "Login", "Account", null, new { @class = "btn-btn-default" })</p>
+    </div>
+   
+</div>
+
+You are using @Request.Browser.Browser today! For issues contact me at @@kbonnie
+
+@{ var amounts = new List<Decimal> { 100, 25.50m, -40, 2364.99m };
+}
+
+<ul>
+    @foreach(decimal amount in amounts)
+    {
+        <li>@formatAmount(amount)</li>
+    }
+</ul>
+
+@section scripts {
+    <script>var testingInASP = true;</script>
+}
+   
+
+@helper formatAmount(decimal amount)
+{ 
+    var color = "green";
+    if (amount < 0)
+    {
+        color = "red";
+    }
+    <span style="color: @color">@String.Format("{0:c}", amount)</span>
+}
